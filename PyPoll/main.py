@@ -38,7 +38,7 @@ with open(csvpath, newline="") as csvfile:
         vote_index = vote_counts.index(max_vote_count)
         winning_candidate = candidate_list[vote_index]
 
-print('')
+
 print('Election Results')
 print('----------------')
 print(f'Total Votes: {total_votes}')
@@ -48,3 +48,15 @@ for i, candidate in enumerate(candidate_list):
 print('------------------')
 print(f'Winner: {winning_candidate}')
 print('')
+
+with open('Analysis.txt', 'w') as outputfile:
+    outputfile.write('Election Results\n')
+    outputfile.write('----------------\n')
+    outputfile.write(f'Total Votes: {total_votes}\n')
+    outputfile.write('----------------\n')
+    for i, candidate in enumerate(candidate_list):
+        outputfile.write(f'{candidate}: {((vote_counts[i]/total_votes) * 100):0.3f}% ({vote_counts[i]})\n')
+    outputfile.write('------------------\n')
+    outputfile.write(f'Winner: {winning_candidate}\n')
+
+    
